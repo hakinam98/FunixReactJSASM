@@ -27,7 +27,7 @@ class StaffList extends Component {
         <div className=" col-12 col-md-3 col-sm-4 m-1">
           <Card className="">
             <h4>Họ và tên: {staff.name}</h4>
-            <ul className="list-unstyle">
+            <ul className="list-unstyled">
               <li>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</li>
               <li>
                 Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}
@@ -39,7 +39,12 @@ class StaffList extends Component {
           </Card>
         </div>
       );
-    } else return <p>Bấm vào tên nhân viên để xem thông tin.</p>;
+    } else
+      return (
+        <div className="col-12 col-md-3 col-sm-4 m-1">
+          Bấm vào tên nhân viên để xem thông tin.
+        </div>
+      );
   }
 
   render() {
@@ -51,7 +56,7 @@ class StaffList extends Component {
       );
     });
     return (
-      <div className="container">
+      <div>
         <div className="row">{menu}</div>
         <div className="row">{this.renderStaff(this.state.selectedStaff)}</div>
       </div>

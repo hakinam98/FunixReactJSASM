@@ -8,14 +8,16 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { staffs: STAFFS, deparment: DEPARTMENTS };
+    this.state = { staffs: STAFFS };
   }
 
   render() {
     return (
       <div>
         <Navbar dark color="primary">
-          <NavbarBrand herf="/">Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
+          <NavbarBrand herf="/" className="text-white">
+            Ứng dụng quản lý nhân sự v1.0
+          </NavbarBrand>
         </Navbar>
         <StaffList staffs={this.state.staffs} />
       </div>
