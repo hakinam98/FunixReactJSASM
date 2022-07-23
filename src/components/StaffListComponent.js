@@ -50,6 +50,7 @@ class StaffList extends Component {
   //Commit 5
   //Commit 6
   //commit 7
+  //commit 8
   render() {
     const menu = this.props.staffs.map((staff) => {
       return (
