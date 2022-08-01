@@ -1,6 +1,6 @@
-import { Card, CardImg } from "reactstrap";
+import { Card, CardImg, Input, Label, Button, InputGroup } from "reactstrap";
 import { Link } from "react-router-dom";
-import SearchStaff from "./SearchComponent";
+import { useState } from "react";
 
 function RenderMenuStaff({ staff, onClick }) {
   return (
@@ -21,7 +21,22 @@ function RenderMenuStaff({ staff, onClick }) {
 }
 
 const StaffList = (props) => {
-  const menu = props.staffs.map((staff) => {
+  const [keywords, setKeywords] = useState("");
+  const [key, setKey] = useState("");
+
+  function handleInputChange(value) {
+    setKey(value);
+  }
+  function handleSearch() {
+    setKeywords(key);
+    setKey("");
+  }
+  let staffs = props.staffs;
+  staffs = staffs.filter((staff) => {
+    return staff.name.toUpperCase().includes(keywords.toUpperCase());
+  });
+
+  const menu = staffs.map((staff) => {
     return (
       <div key={staff.id} className="col-6 col-sm-4 col-md-2">
         <RenderMenuStaff staff={staff} />
@@ -37,7 +52,16 @@ const StaffList = (props) => {
               <h3>Nhân viên</h3>
             </div>
             <div>
-              <SearchStaff />
+              <InputGroup type="submit">
+                <Input
+                  placeholder="Tìm nhân viên"
+                  value={key}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                />
+                <Button type="submit" color="primary" onClick={handleSearch}>
+                  <i className="fa fa-search" aria-hidden="true"></i>
+                </Button>
+              </InputGroup>
             </div>
           </div>
 
