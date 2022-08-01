@@ -20,8 +20,6 @@ class Main extends Component {
     this.setState({ selectedStaff: staffId });
   }
 
-  searchStaff() {}
-
   render() {
     const StaffWithId = ({ match }) => {
       return (
